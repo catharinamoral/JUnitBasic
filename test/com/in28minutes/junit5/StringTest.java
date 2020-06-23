@@ -4,6 +4,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -40,6 +41,18 @@ class StringTest {
 		int expectedLength = 4;
 		
 		assertEquals(expectedLength, actualLenght);
+	}
+	
+	@Test
+	void lenght_exception() {
+		String str = null;
+		
+		assertThrows(NullPointerException.class, 
+				() -> {
+					str.length();
+				}
+				);
+		
 	}
 	
 	@Test

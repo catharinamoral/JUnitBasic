@@ -3,6 +3,7 @@ package com.in28minutes.junit5;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -13,6 +14,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class StringTest {
 
@@ -42,6 +45,20 @@ class StringTest {
 		int expectedLength = 4;
 		
 		assertEquals(expectedLength, actualLenght);
+	}
+	
+	@Test
+	void lenght_greater_than_zero() {
+		assertTrue("ABCD".length()>0);
+		assertTrue("AB".length()>0);
+		assertTrue("A".length()>0);
+		assertTrue("DEF".length()>0);
+	}
+	
+	@ParameterizedTest
+	@ValueSource(strings = {"ABCD", "ABC", "A", "DEF"})
+	void lenght_greater_than_zero_using_parameterized_test(String str) {
+		assertTrue(str.length()>0);
 	}
 	
 	@Test

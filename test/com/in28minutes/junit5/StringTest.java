@@ -15,6 +15,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
@@ -23,6 +24,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class StringTest {
+	
+	private String str;
 
 	@BeforeAll
 	static void beforeAll() {
@@ -120,5 +123,27 @@ class StringTest {
 		
 		assertArrayEquals(expected, actualResult);
 	}
+	
+	
+	@Nested
+	@DisplayName("For an empty String")
+	class EmptyStringTest{
+		
+		@BeforeEach
+		void setToEmpty(){
+			str = "";
+		}
+		
+		@Test
+		void leghtIsZero() {
+			assertEquals(0, str.length());
+		}
+		
+		@Test
+		void upperCaseIsEmpty() {
+			assertEquals("", str.toUpperCase());
+		}
+	}
+	
 	
 }
